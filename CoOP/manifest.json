@@ -1,0 +1,14 @@
+{
+   "content_scripts": [ {
+      "all_frames": false,
+      "js": [ "coop.js" ],
+      "matches": [ "http://*/*" ],
+      "run_at": "document_start"
+   } ],
+   "permissions": [
+    "notifications"
+  ],
+   "description": "Shows the notifications for the CoOP web application",
+   "name": "CoOP Notifications",
+   "version": "0.0.1"
+}
