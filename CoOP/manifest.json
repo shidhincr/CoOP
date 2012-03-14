@@ -2,8 +2,8 @@
    "content_scripts": [ {
       "all_frames": false,
       "js": [ "coop.js" ],
-      "matches": [ "http://*/*" ],
-      "run_at": "document_start"
+      "matches": [ "*://coopapp.com/*" ]
+      
    } ],
    "permissions": [
     "notifications"
