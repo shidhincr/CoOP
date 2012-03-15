@@ -1,7 +1,7 @@
 {
    "content_scripts": [ {
       "all_frames": false,
-      "js": [ "coop.min.js" ],
+      "js": [ "coop.js" ],
       "matches": [ "*://coopapp.com/*" ]
       
    } ],

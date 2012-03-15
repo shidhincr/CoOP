@@ -8,20 +8,31 @@
 */
 var _$main$ = function(){
 
+	var _link = document.createElement("a");
+	_link.innerHTML = "Enable desktop notifications";
+	_link.id = "_$link$_";
+	_link.href = "#";
+	var _bar  = document.createTextNode(" |        ");
+	var _container = document.getElementById("controls");
+	if(!_container){return;}
+	_container.insertBefore(_bar,_container.firstChild);
+	_container.insertBefore(_link,_container.firstChild);
+
 	// request the notification permission
 	if (window.webkitNotifications.checkPermission() != 0){
-		var _link = document.createElement("a");
-		_link.innerHTML = "Enable desktop notifications";
-		_link.id = "_$link$_";
-		_link.href = "#";
-		var _bar  = document.createTextNode(" |        ");
-		var _container = document.getElementById("controls");
-		if(!_container){return;}
-		_link.setAttribute("onClick","javascript:window.webkitNotifications.requestPermission(_$final$);return false;");
-		_container.insertBefore(_bar,_container.firstChild);
-		_container.insertBefore(_link,_container.firstChild);
+		link.setAttribute("onClick","javascript:window.webkitNotifications.requestPermission(_$final$);return false;");
 	}else{
 		_$final$();
+	}
+};
+function _$notify$(){
+	if(unreadCount.pauseNotification == 0 ){
+		document.getElementById("_$link$_").innerHTML = "Resume notifications";
+		unreadCount.pauseNotification = 1;
+	}
+	else{
+		document.getElementById("_$link$_").innerHTML = "Pause notifications";
+		unreadCount.pauseNotification = 0;
 	}
 };
 function _$final$(){
@@ -31,13 +42,16 @@ function _$final$(){
 	//keep notified ids
 	unreadCountObj.notifiedIds = [];
 	//remove the link for desktop notification
-	if(document.getElementById("_$link$_") && document.getElementById("controls")){
-		var _container = document.getElementById("controls");
-		_container.removeChild( document.getElementById("_$link$_") );
+	if(document.getElementById("_$link$_")){
+		document.getElementById("_$link$_").innerHTML = "Pause notifications";
+		unreadCountObj.pauseNotification = 0;
+		document.getElementById("_$link$_").setAttribute("onClick","javascript:_$notify$()");
 	}
 	window.unreadCount.updateUnreadCount = function(){
 		var elementId = ''; 
-		if($('note_' + unreadCountObj.mostRecentlyViewedId) || $('day_entry_' + unreadCountObj.mostRecentlyViewedId)) { 
+		if(
+			!unreadCountObj.pauseNotification && ($('note_' + unreadCountObj.mostRecentlyViewedId) || $('day_entry_' + unreadCountObj.mostRecentlyViewedId))
+		 ) { 
 			$$('.entry').each(function(element) { 
 				elementId = this._getIdFromEntryElement(element);
 				if(elementId == this.mostRecentlyViewedId){
@@ -64,6 +78,7 @@ if (!document.xmlVersion) {
 	addScript.setAttribute("type","text/javascript");
 	addScript.setAttribute("charset","UTF-8");
 	addScript.appendChild(document.createTextNode('('+ _$main$ +')();'));
+	addScript.appendChild(document.createTextNode( _$notify$ ));
 	addScript.appendChild(document.createTextNode( _$final$ ));
 	var h = document.getElementsByTagName("head")[0] ||  document.body ||document.documentElement;
 	h.appendChild(addScript);
