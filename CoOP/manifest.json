@@ -1,14 +1,14 @@
 {
    "content_scripts": [ {
       "all_frames": false,
-      "js": [ "coop.js" ],
+      "js": [ "coop.min.js" ],
       "matches": [ "*://coopapp.com/*" ]
       
    } ],
    "permissions": [
     "notifications"
   ],
-   "description": "Shows the notifications for the CoOP web application",
-   "name": "CoOP Notifications",
-   "version": "0.0.1"
+   "description": "Shows the notifications for the Co-op web application",
+   "name": "Co-op Desktop Notifications",
+   "version": "1.0.0"
 }
