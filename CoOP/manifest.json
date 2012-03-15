@@ -2,7 +2,7 @@
    "content_scripts": [ {
       "all_frames": false,
       "js": [ "coop.min.js" ],
-      "matches": [ "*://coopapp.com/*" ]
+      "matches": [ "*://coopapp.com/groups/*" ]
       
    } ],
    "permissions": [
