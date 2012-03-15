@@ -1,5 +1,5 @@
 /**
-* CoOP Desktop notification - Google chrome extension
+* Co-op Desktop notification - Google chrome extension
 * @Author Shidhin C R
 * @Version 0.0.1
 *
