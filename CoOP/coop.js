@@ -65,8 +65,8 @@ function _$final$(){
 					var n = window.webkitNotifications.createNotification(_icon, _name, _content);
 					n.show();
 					this.notifiedIds.push( elementId );
+					setTimeout( function() { n.cancel() }, 10000 );
 				}
-				//setTimeout( function() { n.cancel() }, 10000 );
 			}.bind(unreadCountObj));
 		}
 		// give the control back to the actual function
