@@ -8,7 +8,7 @@
    "permissions": [
     "notifications"
   ],
-   "description": "Shows the notifications for the Co-op web application",
+   "description": "Shows the notifications for the Co-op web application ( coopapp.com )",
    "name": "Co-op Desktop Notifications",
    "version": "1.0.0"
 }
